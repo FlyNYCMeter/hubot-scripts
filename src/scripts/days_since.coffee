@@ -20,7 +20,7 @@ module.exports = (robot) -
   robot.respond /how long since everything$/i, (msg) ->
     if robot.brain.data.days_since && robot.brain.data.days_since.length 0
       names = []
-      robot.brain.data.days_since.each (item)->
+      _(robot.brain.data.days_since).each (item)->
         msg.send item
 
   robot.respond /it's been (\d+) days since\s+(.*?)[.?!]?$/i, (msg) ->
