@@ -69,16 +69,16 @@ module.exports = (robot) ->
       if data.build.phase == 'FINISHED'
         if data.build.status == 'FAILURE'
           if data.name in @failing
-            build = "is still"
+            build = "is still (rain)"
           else
-            build = "started"
+            build = "started (rain)"
           robot.send envelope, "#{data.name} build ##{data.build.number} #{build} failing (#{encodeURI(data.build.full_url)})" if shouldNotify(envelope.notstrat, data, @failing)
           @failing.push data.name unless data.name in @failing
         if data.build.status == 'SUCCESS'
           if data.name in @failing
-            build = "was restored"
+            build = "was restored (sun)"
           else
-            build = "succeeded"
+            build = "succeeded (sun)"
           robot.send envelope, "#{data.name} build ##{data.build.number} #{build} (#{encodeURI(data.build.full_url)})"  if shouldNotify(envelope.notstrat, data, @failing)
           index = @failing.indexOf data.name
           @failing.splice index, 1 if index isnt -1

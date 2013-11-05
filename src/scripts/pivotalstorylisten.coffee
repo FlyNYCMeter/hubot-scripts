@@ -14,7 +14,8 @@
 #   christianchristensen
 
 module.exports = (robot) ->
-  robot.hear /(sid-|SID-|pivotaltracker.com\/story\/show)/i, (msg) ->
+  robot.hear /(sid-|SID-|pivotaltracker.com\/story\/show|pivotaltracker.com\/s\/projects\/\d+\/stories\/\d+)/i, (msg) ->
+
     token = process.env.HUBOT_PIVOTAL_TOKEN
     story_id = msg.message.text.match(/\d+$/) # look for some numbers in the string
 

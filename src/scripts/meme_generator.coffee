@@ -182,8 +182,8 @@ memeGenerator = (msg, generatorID, imageID, text0, text1, callback) ->
   preferredDimensions = process.env.HUBOT_MEMEGEN_DIMENSIONS
 
   unless username? and password?
-    msg.send "MemeGenerator account isn't setup. Sign up at http://memegenerator.net"
-    msg.send "Then ensure the HUBOT_MEMEGEN_USERNAME and HUBOT_MEMEGEN_PASSWORD environment variables are set"
+#    msg.send "MemeGenerator account isn't setup. Sign up at http://memegenerator.net"
+#    msg.send "Then ensure the HUBOT_MEMEGEN_USERNAME and HUBOT_MEMEGEN_PASSWORD environment variables are set"
     return
 
   msg.http('http://version1.api.memegenerator.net/Instance_Create')
