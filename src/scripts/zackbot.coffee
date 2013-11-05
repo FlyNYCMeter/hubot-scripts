@@ -14,4 +14,4 @@
 
 module.exports = (robot) ->
   robot.hear /\bzach\b/i, (msg) ->
-      msg.send "Learn to spell 'Zack', you fool!"
+      msg.send "You mean 'Zack', don't you?"
