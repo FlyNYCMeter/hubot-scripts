@@ -16,12 +16,10 @@
 
 _ = require 'underscore'
 
-module.exports = (robot) -
+module.exports = (robot) ->
   robot.respond /how long since everything$/i, (msg) ->
-    if robot.brain.data.days_since && robot.brain.data.days_since.length 0
-      names = []
-      _(robot.brain.data.days_since).each (item)->
-        msg.send item
+    if robot.brain.data.days_since
+      msg.send _.pairs(robot.brain.data.days_since)
 
   robot.respond /it's been (\d+) days since\s+(.*?)[.?!]?$/i, (msg) ->
     date = new Date
@@ -37,4 +35,5 @@ module.exports = (robot) -
       days_since = Math.floor((new Date - new Date(date).getTime()) / (1000*24*60*60))
       msg.send "it's been " + days_since + " days since " + msg.match[1]
     else
-      msg.send "I don't recall that event"
+      if msg.match[1] != 'everything'
+        msg.send "I don't recall that event"
